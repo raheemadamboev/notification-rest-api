@@ -5,7 +5,10 @@ import io.ktor.client.*
 import io.ktor.client.engine.cio.*
 import io.ktor.client.features.json.*
 import io.ktor.client.features.json.serializer.*
-import xyz.teamgravity.plugins.*
+import xyz.teamgravity.data.remote.OneSignalServiceImpl
+import xyz.teamgravity.plugins.configureMonitoring
+import xyz.teamgravity.plugins.configureRouting
+import xyz.teamgravity.plugins.configureSerialization
 
 fun main(args: Array<String>): Unit =
     io.ktor.server.netty.EngineMain.main(args)
@@ -21,6 +24,6 @@ fun Application.module() {
     }
 
     configureMonitoring()
-    configureRouting()
+    configureRouting(OneSignalServiceImpl(client = client, apiKey = ApiKey.API_KEY))
     configureSerialization()
 }
