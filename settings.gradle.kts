@@ -1,0 +1,1 @@
+rootProject.name = "xyz.teamgravity.notification-rest-api"
